@@ -1,0 +1,26 @@
+name: Ítem técnico
+description: Tarea técnica habilitadora (esqueleto, CI, instalador, spike, etc.)
+title: "TEC-XX · <título>"
+labels: ["tipo:tecnica"]
+body:
+  - type: textarea
+    id: objetivo
+    attributes:
+      label: Objetivo
+      description: Qué se necesita y para qué.
+    validations:
+      required: true
+  - type: textarea
+    id: criterios
+    attributes:
+      label: Criterios de aceptación
+      value: |
+        - [ ]
+        - [ ]
+    validations:
+      required: true
+  - type: input
+    id: requerimientos
+    attributes:
+      label: Requerimientos relacionados
+      placeholder: RT-04, RW-01

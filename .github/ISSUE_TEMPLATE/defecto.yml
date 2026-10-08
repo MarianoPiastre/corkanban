@@ -1,0 +1,38 @@
+name: Defecto
+description: Reportar un error encontrado en la app
+title: "DEF · <descripción corta>"
+labels: ["tipo:defecto"]
+body:
+  - type: textarea
+    id: descripcion
+    attributes:
+      label: Descripción
+      description: Qué pasa y qué debería pasar.
+    validations:
+      required: true
+  - type: textarea
+    id: pasos
+    attributes:
+      label: Pasos para reproducirlo
+      value: |
+        1.
+        2.
+        3.
+  - type: dropdown
+    id: severidad
+    attributes:
+      label: Severidad
+      options: ["Crítica", "Alta", "Media", "Baja"]
+    validations:
+      required: true
+  - type: input
+    id: historia
+    attributes:
+      label: Historia relacionada
+      placeholder: HU-XX
+  - type: input
+    id: entorno
+    attributes:
+      label: Entorno
+      description: Versión de Windows, resolución y escala de pantalla, cantidad de monitores.
+      placeholder: Windows 11, 1920×1080 al 100 %, un monitor

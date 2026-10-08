@@ -1,0 +1,6 @@
+# Todos los archivos de texto se guardan con fin de línea LF (evita diferencias entre Windows y el CI).
+* text=auto eol=lf
+*.png binary
+*.ico binary
+*.icns binary
+*.pdf binary

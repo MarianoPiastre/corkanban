@@ -1,0 +1,53 @@
+name: Historia de usuario
+description: Nueva funcionalidad
+title: "HU-XX · <título>"
+labels: ["tipo:historia"]
+body:
+  - type: textarea
+    id: historia
+    attributes:
+      label: Historia
+      description: Formato Como / Quiero / Para.
+      value: |
+        **Como** <rol>
+        **quiero** <funcionalidad>
+        **para** <beneficio>
+    validations:
+      required: true
+  - type: textarea
+    id: criterios
+    attributes:
+      label: Criterios de aceptación
+      description: Uno por línea, numerados como CA-XX.1, CA-XX.2, ...
+      value: |
+        - [ ] CA-XX.1
+        - [ ] CA-XX.2
+    validations:
+      required: true
+  - type: input
+    id: requerimientos
+    attributes:
+      label: Requerimientos que cubre
+      description: IDs de docs/requerimientos.md.
+      placeholder: RF-09, RF-10
+    validations:
+      required: true
+  - type: dropdown
+    id: prioridad
+    attributes:
+      label: Prioridad
+      options: ["Must", "Should", "Could"]
+    validations:
+      required: true
+  - type: textarea
+    id: trazabilidad
+    attributes:
+      label: Trazabilidad
+      value: |
+        - Spec SDD: `specs/HU-XX-....md`
+        - Escenarios BDD: `features/hu-xx-....feature`
+        - Tests: `...test.js`
+  - type: textarea
+    id: notas
+    attributes:
+      label: Notas y dependencias
