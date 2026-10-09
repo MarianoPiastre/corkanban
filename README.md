@@ -3,7 +3,8 @@
 Un tablero de corcho con post-its que vive en el fondo de pantalla de Windows: tus tareas organizadas en un kanban,
 siempre a la vista cuando mirás el escritorio.
 
-> **Estado:** en desarrollo. Todavía no hay una versión para instalar.
+> **Estado:** en desarrollo. Todavía no hay una versión para instalar. Cuando la haya, se va a poder descargar desde
+> [Releases](https://github.com/MarianoPiastre/corkanban/releases).
 
 ## Qué hace
 
@@ -31,7 +32,7 @@ Cada funcionalidad sigue la cadena de trazabilidad:
 | Artefacto | Dónde |
 |---|---|
 | Requerimientos del producto | [`docs/requerimientos.md`](docs/requerimientos.md) |
-| Historias de usuario e ítems técnicos | Issues y tablero del proyecto |
+| Historias de usuario e ítems técnicos | [Issues](https://github.com/MarianoPiastre/corkanban/issues), [hitos](https://github.com/MarianoPiastre/corkanban/milestones) y [tablero](https://github.com/users/MarianoPiastre/projects/1) |
 | Especificaciones SDD | [`specs/`](specs/) |
 | Escenarios BDD | [`features/`](features/) |
 | Notas de cierre de cada hito | [`docs/hitos/`](docs/hitos/) |
