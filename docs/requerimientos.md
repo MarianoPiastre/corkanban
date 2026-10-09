@@ -1,10 +1,12 @@
 # Requerimientos de Corkanban: tablero corcho + kanban como fondo de pantalla
 
-Versión 1.1 · 8 oct 2026 · @Mariano Piastrellini
+Versión 1.2 · 8 oct 2026 · @Mariano Piastrellini
 
 Adaptado de «Requerimientos tablero corcho + kanban como fondo de Wallpaper Engine» (5 oct 2026), que se conserva sin cambios fuera de este repositorio. Todas las decisiones están tomadas y aprobadas (sección 11).
 
 Cambios de la versión 1.1: la app se llama **Corkanban**, y las pruebas de la sección 9 pasan a llamarse PA-xx (pruebas de aceptación del producto), para no confundirlas con los criterios de aceptación de cada historia (CA-xx.n).
+
+Cambios de la versión 1.2: los hitos pasan a ser rebanadas verticales con sus issues (sección 10), las versiones se publican en GitHub Releases y se registran las decisiones P-41 a P-45.
 
 ## 1. Resumen y objetivo
 
@@ -299,7 +301,7 @@ Esta sección reemplaza a «Integración con Wallpaper Engine».
 **Entregables**
 
 - Un instalador (`setup.exe`) que instala la app, crea el acceso directo, activa el inicio con Windows y permite desinstalarla sin borrar los datos.
-- Las versiones nuevas se entregan como un instalador nuevo que se instala encima y conserva los datos.
+- Las versiones nuevas se entregan como un instalador nuevo que se instala encima y conserva los datos. Cada versión se publica en GitHub Releases, desde donde se descarga el instalador.
 - Un `README.md` con la instalación (incluido el aviso de Windows SmartScreen, ver sección 10), cómo desactivar el inicio de Wallpaper Engine y dónde quedan los datos y el respaldo.
 
 ## 9. Pruebas de aceptación del producto y plan de pruebas
@@ -339,21 +341,28 @@ El proyecto se considera terminado cuando pasan todas las pruebas Must en esta P
 
 ## 10. Plan de implementación, decisiones asumidas y fuera de alcance
 
-Lo primero es validar la capa del fondo en esta PC, porque de eso depende toda la integración.
+Lo primero es validar la capa del fondo en esta PC, porque de eso depende toda la integración. Después, cada hito es una **rebanada vertical**: suma lógica, interfaz y guardado a la vez, y deja una versión usable. Desde el hito 1 el tablero ya se puede usar todos los días como fondo.
 
 **Hitos**
 
-0. **Hito 0 nuevo: prueba de la capa del fondo**, con la tecnología aprobada. Una ventana mínima ubicada como fondo que verifique: que queda detrás de las ventanas y se ve con Win+D; clic, doble clic, arrastre y rueda con los íconos visibles; escribir sobre un elemento con tildes y ñ; que reaparece tras reiniciar explorer.exe y tras suspender; el inicio con Windows; el consumo en reposo. Si algo falla por la tecnología elegida, se propone cambiarla antes de seguir.
-1. **Modelo y dibujado**, en una ventana común.
-2. **Interacción**: crear, editar sobre el post-it, mover, eliminar, deshacer y modo compacto.
-3. **Finalización, registro y plazos.**
-4. **Persistencia y respaldo.**
-5. **Diseño visual y temas.**
-6. **Integración con Windows**: capa del fondo, bandeja, atajo, monitores, asistente inicial e instalador.
-7. **Pruebas de la sección 9 en esta PC y pulido.**
+Cada hito es un milestone de GitHub y sus historias son issues (P-43).
+
+| Hito | Objetivo | Issues |
+| --- | --- | --- |
+| 0 · Spike: la capa del fondo | Comprobar en esta PC que una ventana de Tauri se puede usar como fondo interactivo: detrás de las ventanas, visible con Win+D, con ratón y teclado (tildes y ñ), y que reaparece tras reiniciar explorer.exe y tras suspender. Si algo falla por la tecnología, se propone cambiarla antes de seguir. | TEC-01 |
+| 1 · MVP: un corcho usable en el escritorio | Ver, crear, editar el título, mover y guardar tareas, con el tablero como fondo y arranque automático. | TEC-02, TEC-03, HU-01 a HU-08 |
+| 2 · Terminar y recuperar | Finalizar, registro, restaurar, eliminar, deshacer y vencimiento del registro. | HU-09 a HU-14 |
+| 3 · Post-its completos | Todos los campos de la tarea, modo compacto y botones ◀ ▶. | HU-15 a HU-22 |
+| 4 · Organizar el tablero | Columna Hoy, columnas y filas gestionables, filas colapsables, búsqueda. | HU-23 a HU-27 |
+| 5 · Accesos rápidos y datos seguros | Bandeja, atajo de tarea rápida, respaldo, exportar e importar, pausa con pantalla completa. | HU-28 a HU-32 |
+| 6 · Listo para compartir | Asistente inicial, ajustes, monitor, tema oscuro e instalador. | HU-33 a HU-36, TEC-04 |
+| 7 · Cierre de la v1 | Pruebas PA-01 a PA-26, pulido y publicación en GitHub Releases. | TEC-05, TEC-06 |
+
+Hasta que exista el asistente inicial (HU-33), los datos se guardan en `Documentos\Corkanban`, y los ajustes de cada PC (franja de íconos, inicio con Windows) se cambian en el archivo de configuración local.
 
 **Cómo debe trabajar Claude Code**
 
+- Seguir [`CONTRIBUTING.md`](../CONTRIBUTING.md): rama por issue, commits RED → GREEN → REFACTOR y PR con plantilla.
 - Entregar cada hito funcionando antes de empezar el siguiente.
 - No agregar dependencias sin consultarlo.
 - Si el hito 0 contradice alguna suposición de este documento, proponer el cambio en lugar de forzar la solución original.
@@ -372,7 +381,7 @@ Lo primero es validar la capa del fondo en esta PC, porque de eso depende toda l
 9. Al cumplirse la fecha de «hasta cuándo» del motivo de espera, el post-it se destaca igual que una fecha límite.
 10. Varios enlaces por tarea. En el post-it se ve un ícono con la cantidad.
 11. Respaldo diario que sobrescribe siempre el mismo archivo, más exportar e importar a mano.
-12. La carpeta de datos se elige en el asistente del primer inicio, sugiriendo `Documentos\Corcho`.
+12. La carpeta de datos se elige en el asistente del primer inicio, sugiriendo `Documentos\Corkanban` (antes `Documentos\Corcho`; cambió con el nombre de la app).
 13. El instalador no lleva firma digital, porque un certificado de firma es pago. Al instalar, Windows SmartScreen va a mostrar «Windows protegió tu PC» y hay que tocar «Más información» y «Ejecutar de todas formas».
 14. Interfaz en HTML, CSS y JavaScript sin frameworks ni compilación de la parte web, para que la puedas leer y tocar.
 15. Aspecto visual del documento original (corcho, chincheta, letra manuscrita).
@@ -429,5 +438,10 @@ Lo primero es validar la capa del fondo en esta PC, porque de eso depende toda l
 | P-36 | Primer inicio en otra PC | Asistente: carpeta de datos y filas. |
 | P-37 | Windows 10 | Tenerlo en cuenta en las decisiones, sin probarlo. |
 | P-38 | Varios monitores | Elegible en los ajustes. Por defecto, el principal. |
-| P-39 | Actualizaciones | Instalador nuevo a mano. La app nunca se conecta a internet. |
+| P-39 | Actualizaciones | Instalador nuevo a mano. La app nunca se conecta a internet. El 8 oct se sumó publicar cada versión en GitHub Releases (P-44). |
 | P-40 | Tema oscuro | Se elige a mano en los ajustes. |
+| P-41 | Nombre | Corkanban (cork + kanban). Repositorio `corkanban`. |
+| P-42 | Repositorio | Público en GitHub, con licencia MIT, en `Documents\GitHub\corkanban`. |
+| P-43 | Hitos | Rebanadas verticales, con un MVP usable como fondo al final del hito 1 (sección 10). |
+| P-44 | Distribución | Cada versión se publica en GitHub Releases con su instalador. |
+| P-45 | Metodología | Como *seguimiento-medicion*, en versión liviana: SDD, BDD, TDD, PR con plantilla, hitos como milestones y una nota de cierre por hito. Sin registro de uso de IA. |
